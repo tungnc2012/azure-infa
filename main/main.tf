@@ -55,8 +55,6 @@ module "mssql-server" {
   depends_on                   = [module.resource_group]
   mssql_version                = "12.0"
   minimum_tls_version          = "1.2"
-
-  database_name    = "terraformmssql"
 }
 
 // module "mssql_database" {

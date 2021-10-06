@@ -1,11 +1,7 @@
 variable "resource_group_name" {
-  description = ""
-  default     = ""
 }
 
 variable "location" {
-  description = ""
-  default     = ""
 }
 
 variable "address_space" {
@@ -40,8 +36,6 @@ variable "capacity" {
 
 #Behind is the SQL variables
 variable "sql_server_name" {
-  description = ""
-  default     = ""
 }
 
 variable "administrator_login" {
@@ -93,13 +87,9 @@ variable "storage_account_access_key" {
 }
 
 variable "mssql_version" {
-  description = ""
-  default     = ""
 }
 
 variable "minimum_tls_version" {
-  description = ""
-  default     = ""
 }
 
 variable "storage_account_access_key_is_secondary" {
@@ -112,7 +102,7 @@ variable "sku_name" {
   default     = ""
 }
 
-variable "server_id" {
+variable "sql_server_id" {
   description = ""
   default     = ""
 }

@@ -55,14 +55,28 @@ module "mssql-server" {
   depends_on                   = [module.resource_group]
   mssql_version                = "12.0"
   minimum_tls_version          = "1.2"
+  database_name    = "terraformmssql"
 }
 
-// module "mssql_database" {
-//   source           = "/home/cloud_user/test-modules/modules/sql/mssql-database"
-//   database_name    = "terraformmssql"
-//   sku_name = "Basic"
-//   server_id = module.mssql-server.sql_server_id
-//   depends_on       = [module.mssql-server]
-// }
+output "sql_server_id" {
+    value = module.mssql-server.server_id
+}
+
+output "sql_server_name" {
+    value =  module.mssql-server.sql_server_name
+}
+
+module "mssql-database" {
+  source           = "/home/cloud_user/test-modules/modules/sql/mssql-server"
+  sql_server_name              = "terraformsqltestfsoft"
+  resource_group_name          = "terraform"
+  location                     = "southeastasia"
+  database_name    = "terraformmssql"
+  mssql_version                = "12.0"
+  minimum_tls_version          = "1.2"
+  sku_name = "Basic"
+  sql_server_id = module.mssql-server.server_id
+  depends_on       = [module.mssql-server]
+}
 
 

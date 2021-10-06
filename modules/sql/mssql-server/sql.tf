@@ -12,11 +12,11 @@ resource "azurerm_mssql_server" "server" {
   }
 }
 
-// resource "azurerm_mssql_database" "terraform-sql-database" {
-//   name = var.database_name
-//   server_id = azurerm_mssql_server.server.id
-//   sku_name = "Basic"
-//   tags = {
-//     environment = "production"
-//   }
-// }
+resource "azurerm_mssql_database" "database" {
+  name = var.database_name
+  server_id = azurerm_mssql_server.server.id
+  sku_name = "Basic"
+  tags = {
+    environment = "production"
+  }
+}

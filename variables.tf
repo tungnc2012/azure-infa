@@ -1,6 +1,6 @@
 variable "resource_group_name" {
   description = ""
-  default     = "tung-terraform"
+  default     = ""
 }
 
 variable "location" {

@@ -79,4 +79,66 @@ module "mssql-database" {
   depends_on       = [module.mssql-server]
 }
 
+// #Test VM
+// resource "azurerm_resource_group" "resource_group" {
+//   name     = "terraform"
+//   location = "southeastasia"
+// }
 
+// resource "azurerm_virtual_network" "vnet" {
+//   resource_group_name = "terraform"
+//   location            = "southeastasia"
+//   name                = "terraform-vnet"
+//   address_space       = ["10.16.0.0/16"]
+// }
+
+// resource "azurerm_subnet" "subnet" {
+//     name = "terraform-subnet"
+//     resource_group_name = "terraform"
+//     virtual_network_name = azurerm_virtual_network.vnet.name
+//     address_prefixes = ["10.16.0.0/20"]
+//    # lookup(map,key,default)  
+// }
+
+// output "subnet_id" {
+//   value = azurerm_subnet.subnet.id
+// }
+
+// resource "azurerm_network_interface" "example" {
+//   name                = "example-nic"
+//   location            = "southeastasia"
+//   resource_group_name = "terraform"
+
+//   ip_configuration {
+//     name                          = "internal"
+//     subnet_id                     = azurerm_subnet.subnet.id
+//     private_ip_address_allocation = "Dynamic"
+//   }
+
+// }
+
+// resource "azurerm_windows_virtual_machine" "example" {
+//   name                = "example-machine"
+//   resource_group_name = "terraform"
+//   location            = "southeastasia"
+//   size                = "Standard_DS1_v2"
+//   admin_username      = "tungdo"  
+//   admin_password      = "Tung12345678"
+//   network_interface_ids = [azurerm_network_interface.example.id]
+
+//   depends_on = [azurerm_network_interface.example]
+
+//   os_disk {
+//     caching              = "ReadWrite"
+//     storage_account_type = "Standard_LRS"
+//     // disk_size_gb = "32"
+//   }
+
+//   source_image_reference {
+//     publisher = "MicrosoftWindowsDesktop"
+//     offer     = "Windows-10"
+//     sku       = "20h1-pro"
+//     version   = "latest"
+//   }
+
+// }
